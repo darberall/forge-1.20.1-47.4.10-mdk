@@ -5,6 +5,8 @@ import net.loadingsignal.algaemod.block.ModBlocks;
 import net.loadingsignal.algaemod.item.ModCreativeModeTab;
 import net.loadingsignal.algaemod.item.ModItems;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
@@ -53,7 +55,6 @@ public class AlgaeMod
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {

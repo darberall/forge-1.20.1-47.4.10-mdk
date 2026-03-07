@@ -22,6 +22,7 @@ public class ModCreativeModeTab {
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(ModItems.ZIRCON.get());
                         pOutput.accept(ModBlocks.ALGAE.get());
+                        pOutput.accept(ModItems.ALGAE_ITEM.get());
 
                     })
                     .build());

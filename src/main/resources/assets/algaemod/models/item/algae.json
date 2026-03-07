@@ -1,3 +1,6 @@
 {
-  "parent": "algaemod:block/algae_0"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "algaemod:item/algae"
+  }
 }
