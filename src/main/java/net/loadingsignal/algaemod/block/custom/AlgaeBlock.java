@@ -6,18 +6,19 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.WaterlilyBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.BlockHitResult;
 
-public class ZirconLampBlock extends Block {
-    public static final IntegerProperty LIT = IntegerProperty.create("lit", 0, 1);
-    public ZirconLampBlock(BlockBehaviour.Properties pProperties) {
+public class AlgaeBlock extends WaterlilyBlock {
+    public static final int MAX_AGE = 4;
+    public static final IntegerProperty AGE = IntegerProperty.create("age", 0, MAX_AGE);
+    public AlgaeBlock(BlockBehaviour.Properties pProperties) {
         super(pProperties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(LIT, 0));
+        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
        }
 
     /*
@@ -33,13 +34,13 @@ public class ZirconLampBlock extends Block {
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (!level.isClientSide && hand == InteractionHand.MAIN_HAND) {
-            int currentLevel = state.getValue(LIT);
+            int currentLevel = state.getValue(AGE);
 
             // Cycle the value (0-5), then loop back to 0
-            int nextLevel = (currentLevel >= 1) ? 0 : currentLevel + 1;
+            int nextLevel = (currentLevel >= MAX_AGE) ? 0 : currentLevel + 1;
 
             // Update the block state in the world
-            level.setBlock(pos, state.setValue(LIT, nextLevel), 3);
+            level.setBlock(pos, state.setValue(AGE, nextLevel), 3);
 
             return InteractionResult.SUCCESS;
         }
@@ -49,7 +50,7 @@ public class ZirconLampBlock extends Block {
 
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(LIT);
+        builder.add(AGE);
     }
 
 }

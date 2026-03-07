@@ -21,7 +21,7 @@ public class ModCreativeModeTab {
             .title(Component.translatable("creativetab.tutorial_tab"))
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(ModItems.ZIRCON.get());
-                        pOutput.accept(ModBlocks.ZIRCON_LAMP.get());
+                        pOutput.accept(ModBlocks.ALGAE.get());
 
                     })
                     .build());

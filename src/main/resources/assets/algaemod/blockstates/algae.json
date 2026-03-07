@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "age=0": { "model": "algaemod:block/algae_0" },
+    "age=1": { "model": "algaemod:block/algae_1" },
+    "age=2": { "model": "algaemod:block/algae_2" },
+    "age=3": { "model": "algaemod:block/algae_3" },
+    "age=4": { "model": "algaemod:block/algae_4" }
+  }
+}

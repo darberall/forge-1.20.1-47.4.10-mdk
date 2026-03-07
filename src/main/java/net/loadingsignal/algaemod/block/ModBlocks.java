@@ -1,7 +1,7 @@
 package net.loadingsignal.algaemod.block;
 
 import net.loadingsignal.algaemod.AlgaeMod;
-import net.loadingsignal.algaemod.block.custom.ZirconLampBlock;
+import net.loadingsignal.algaemod.block.custom.AlgaeBlock;
 import net.loadingsignal.algaemod.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -20,8 +20,8 @@ public class ModBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, AlgaeMod.MODID);
 
 
-    public static final RegistryObject<Block> ZIRCON_LAMP = registerBlock("zircon_lamp",
-            () -> new ZirconLampBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
+    public static final RegistryObject<Block> ALGAE = registerBlock("algae",
+            () -> new AlgaeBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
                     .strength(6f).requiresCorrectToolForDrops()));
 
 
