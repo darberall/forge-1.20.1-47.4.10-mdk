@@ -28,7 +28,7 @@ public class ZirconLampBlock extends Block {
         }
         return super.use(state, level, blockPos, player, hand, result);
     }
-    protected void createBlockStateDefintion(StateDefinition.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(LIT);
     }
 
