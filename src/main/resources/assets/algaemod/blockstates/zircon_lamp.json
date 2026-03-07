@@ -1,6 +1,6 @@
 {
   "variants": {
-    "lit=true": { "model": "algaemod:block/zircon_lamp_on" },
-    "lit=false": { "model": "algaemod:block/zircon_lamp_off" }
+    "lit=1": { "model": "algaemod:block/zircon_lamp_1" },
+    "lit=0": { "model": "algaemod:block/zircon_lamp_0" }
   }
 }

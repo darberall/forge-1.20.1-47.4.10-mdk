@@ -22,8 +22,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> ZIRCON_LAMP = registerBlock("zircon_lamp",
             () -> new ZirconLampBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
-                    .strength(6f).requiresCorrectToolForDrops()
-                    .lightLevel(state -> state.getValue(ZirconLampBlock.LIT) ? 15 : 0)));
+                    .strength(6f).requiresCorrectToolForDrops()));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

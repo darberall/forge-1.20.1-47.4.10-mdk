@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "algaemod:block/zircon_lamp_on"
+    "all": "algaemod:block/zircon_lamp_0"
   }
 }
