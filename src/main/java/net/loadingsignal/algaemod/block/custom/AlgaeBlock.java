@@ -1,6 +1,7 @@
 package net.loadingsignal.algaemod.block.custom;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -8,21 +9,27 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.vehicle.Boat;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.WaterlilyBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+
+import javax.annotation.Nullable;
 
 public class AlgaeBlock extends WaterlilyBlock implements BonemealableBlock {
 
@@ -31,10 +38,20 @@ public class AlgaeBlock extends WaterlilyBlock implements BonemealableBlock {
     public static final int MAX_AGE = 4;
 
     public static final IntegerProperty AGE = BlockStateProperties.AGE_4;
+    //public static final BooleanProperty NORTH = BooleanProperty.create("north");
+    //public static final BooleanProperty EAST = BooleanProperty.create("east");
+    //public static final BooleanProperty SOUTH = BooleanProperty.create("south");
+    //public static final BooleanProperty WEST = BooleanProperty.create("west");
+    //public static final BooleanProperty UP = BooleanProperty.create("up");
 
     protected IntegerProperty getAgeProperty() {
         return AGE;
     }
+
+   //protected BooleanProperty getNorthProperty(){
+    //    return NORTH;
+   // }
+
 
     public int getMaxAge() {
         return MAX_AGE;
@@ -44,22 +61,40 @@ public class AlgaeBlock extends WaterlilyBlock implements BonemealableBlock {
         return state.getValue(this.getAgeProperty());
     }
 
+
     public BlockState getStateForAge(int age) {
         return this.defaultBlockState().setValue(this.getAgeProperty(), Integer.valueOf(age));
+
     }
+
+   //public BlockState getStateForAge(boolean north) {
+    //    return this.defaultBlockState().setValue(this.getNorthProperty(), Boolean.valueOf(true));
+
+   // }
 
     public final boolean isMaxAge(BlockState state) {
         return this.getAge(state) >= this.getMaxAge();
     }
 
+    //public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+
+    //@Nullable
+   // @Override
+   // public BlockState getStateForPlacement(BlockPlaceContext context) {
+       // return this.defaultBlockState().setValue(FACING, Direction.NORTH);
+  //  }
+
     public AlgaeBlock(BlockBehaviour.Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(this.getAgeProperty(), Integer.valueOf(0)));
+       // this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
+
        }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(AGE);
+    //    builder.add(FACING);
     }
 
 
